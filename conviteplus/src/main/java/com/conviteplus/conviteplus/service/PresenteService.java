@@ -1,18 +1,21 @@
 package com.conviteplus.conviteplus.service;
 
-import com.conviteplus.conviteplus.dto.PresenteDTO;
-import com.conviteplus.conviteplus.model.Presente;
-import com.conviteplus.conviteplus.model.Evento;
-import com.conviteplus.conviteplus.repository.PresenteRepository;
-import com.conviteplus.conviteplus.repository.EventoRepository;
-import org.springframework.stereotype.Service;
-import jakarta.transaction.Transactional;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import org.springframework.stereotype.Service;
+
+import com.conviteplus.conviteplus.dto.PresenteDTO;
+import com.conviteplus.conviteplus.model.Evento;
+import com.conviteplus.conviteplus.model.Presente;
+import com.conviteplus.conviteplus.repository.EventoRepository;
+import com.conviteplus.conviteplus.repository.PresenteRepository;
+
+import jakarta.transaction.Transactional;
+
 @Service
 public class PresenteService {
-    
+
     private final PresenteRepository presenteRepository;
     private final EventoRepository eventoRepository;
 

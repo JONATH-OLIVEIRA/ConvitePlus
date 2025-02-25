@@ -1,5 +1,5 @@
-package com.conviteplus.conviteplus.model;
-
+package com.conviteplus.conviteplus.model
+;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -17,8 +17,7 @@ public class Presente {
     
     private String nome;
     private String descricao;
-    private boolean reservado;
-    
+
     @ManyToOne
     @JoinColumn(name = "evento_id", nullable = false)
     private Evento evento;
@@ -45,14 +44,6 @@ public class Presente {
 
     public void setDescricao(String descricao) {
         this.descricao = descricao;
-    }
-
-    public boolean isReservado() {
-        return reservado;
-    }
-
-    public void setReservado(boolean reservado) {
-        this.reservado = reservado;
     }
 
     public Evento getEvento() {
