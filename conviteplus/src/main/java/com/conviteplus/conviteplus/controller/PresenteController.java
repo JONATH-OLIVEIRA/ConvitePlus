@@ -2,18 +2,15 @@ package com.conviteplus.conviteplus.controller;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import com.conviteplus.conviteplus.dto.PresenteDTO;
 import com.conviteplus.conviteplus.service.PresenteService;
 
+import java.util.List;
+
 @RestController
-@RequestMapping("/presentes")
+@RequestMapping("/eventos/{eventoId}/presentes")
 public class PresenteController {
 
     private final PresenteService presenteService;
@@ -23,14 +20,16 @@ public class PresenteController {
     }
 
     @PostMapping
-    public ResponseEntity<PresenteDTO> criarPresente(@RequestBody PresenteDTO presenteDTO) {
-        PresenteDTO presenteCriado = presenteService.adicionarPresente(presenteDTO);
-        return ResponseEntity.status(HttpStatus.CREATED).body(presenteCriado); 
+    public ResponseEntity<List<PresenteDTO>> adicionarListaDePresentes(
+            @PathVariable Long eventoId,
+            @RequestBody List<PresenteDTO> presentesDTO) {
+        List<PresenteDTO> listaCriada = presenteService.adicionarListaDePresentes(eventoId, presentesDTO);
+        return ResponseEntity.status(HttpStatus.CREATED).body(listaCriada);
     }
 
-    @GetMapping("/{presenteId}")
-    public ResponseEntity<PresenteDTO> getPresente(@PathVariable Long presenteId) {
-        PresenteDTO presenteDTO = presenteService.encontrarPresentePorId(presenteId);
-        return ResponseEntity.ok(presenteDTO);
+    @GetMapping
+    public ResponseEntity<List<PresenteDTO>> listarPresentesPorEvento(@PathVariable Long eventoId) {
+        List<PresenteDTO> presentes = presenteService.listarPresentesPorEvento(eventoId);
+        return ResponseEntity.ok(presentes);
     }
 }

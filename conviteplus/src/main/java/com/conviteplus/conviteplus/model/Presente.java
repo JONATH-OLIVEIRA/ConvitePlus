@@ -6,7 +6,6 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
-import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 
 @Entity
@@ -18,16 +17,12 @@ public class Presente {
     
     private String nome;
     private String descricao;
+    private boolean reservado;
     
     @ManyToOne
-    @JoinColumn(name = "evento_id")
+    @JoinColumn(name = "evento_id", nullable = false)
     private Evento evento;
-    
-    @OneToOne
-    @JoinColumn(name = "reservado_por")
-    private Convidado reservadoPor;
 
-    // Getters and Setters
     public Long getId() {
         return id;
     }
@@ -52,19 +47,19 @@ public class Presente {
         this.descricao = descricao;
     }
 
+    public boolean isReservado() {
+        return reservado;
+    }
+
+    public void setReservado(boolean reservado) {
+        this.reservado = reservado;
+    }
+
     public Evento getEvento() {
         return evento;
     }
 
     public void setEvento(Evento evento) {
         this.evento = evento;
-    }
-
-    public Convidado getReservadoPor() {
-        return reservadoPor;
-    }
-
-    public void setReservadoPor(Convidado reservadoPor) {
-        this.reservadoPor = reservadoPor;
     }
 }

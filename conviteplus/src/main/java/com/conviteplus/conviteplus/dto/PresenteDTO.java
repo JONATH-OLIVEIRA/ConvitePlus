@@ -1,20 +1,21 @@
 package com.conviteplus.conviteplus.dto;
 
-import com.fasterxml.jackson.annotation.JsonProperty;
+import com.conviteplus.conviteplus.model.Presente;
 
 public class PresenteDTO {
 
-    private Long id; // Apenas para o retorno, quando o presente for persistido
+    private Long id;
     private String nome;
     private String descricao;
 
-    @JsonProperty("eventoId") // Exibe apenas o ID do evento
-    private Long eventoId;
+    public PresenteDTO() {
+    }
 
-    @JsonProperty("reservadoPorId") // Exibe apenas o ID do convidado
-    private Long reservadoPorId;
-
-    // Getters and Setters
+    public PresenteDTO(Presente presente) {
+        this.id = presente.getId();
+        this.nome = presente.getNome();
+        this.descricao = presente.getDescricao();
+    }
 
     public Long getId() {
         return id;
@@ -38,21 +39,5 @@ public class PresenteDTO {
 
     public void setDescricao(String descricao) {
         this.descricao = descricao;
-    }
-
-    public Long getEventoId() {
-        return eventoId;
-    }
-
-    public void setEventoId(Long eventoId) {
-        this.eventoId = eventoId;
-    }
-
-    public Long getReservadoPorId() {
-        return reservadoPorId;
-    }
-
-    public void setReservadoPorId(Long reservadoPorId) {
-        this.reservadoPorId = reservadoPorId;
     }
 }
