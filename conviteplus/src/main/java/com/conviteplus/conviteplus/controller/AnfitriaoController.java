@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.conviteplus.conviteplus.dto.EventoComPresentesDTO;
 import com.conviteplus.conviteplus.exceptions.AnfitriaoNaoEncontradoException;
 import com.conviteplus.conviteplus.model.Anfitriao;
 import com.conviteplus.conviteplus.service.AnfitriaoService;
@@ -39,5 +40,13 @@ public class AnfitriaoController {
     @ExceptionHandler(AnfitriaoNaoEncontradoException.class)
     public ResponseEntity<String> tratarAnfitriaoNaoEncontradoException(AnfitriaoNaoEncontradoException ex) {
         return ResponseEntity.status(HttpStatus.NOT_FOUND).body(ex.getMessage());
+    }
+ // Endpoint para listar anfitrião, evento e presentes
+    @GetMapping("/{anfitriaoId}/eventos/{eventoId}")
+    public ResponseEntity<EventoComPresentesDTO> buscarEventoComPresentes(
+            @PathVariable Long anfitriaoId,
+            @PathVariable Long eventoId) {
+        EventoComPresentesDTO eventoComPresentes = anfitriaoService.buscarEventoComPresentes(anfitriaoId, eventoId);
+        return ResponseEntity.ok(eventoComPresentes);
     }
 }

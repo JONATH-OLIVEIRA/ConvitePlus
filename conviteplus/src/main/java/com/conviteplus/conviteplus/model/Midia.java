@@ -1,7 +1,5 @@
 package com.conviteplus.conviteplus.model;
 
-import java.util.UUID;
-
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
 import jakarta.persistence.Enumerated;
@@ -30,7 +28,7 @@ public class Midia {
     private String url;
     
     @Enumerated(EnumType.STRING)
-    private TipoMidia tipo;
+  //  private TipoMidia tipo;
     
     @ManyToOne
     @JoinColumn(name = "postado_por")

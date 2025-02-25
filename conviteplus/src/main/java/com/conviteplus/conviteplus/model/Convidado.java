@@ -26,7 +26,7 @@ public class Convidado {
 	private String nomeEditado; // Nome que pode ser editado pelo convidado após confirmação
 
 	@Enumerated(EnumType.STRING)
-	private StatusConfirmacao statusConfirmacao; // Status de confirmação (PENDENTE, CONFIRMADO, RECUSADO)
+	//private StatusConfirmacao statusConfirmacao; // Status de confirmação (PENDENTE, CONFIRMADO, RECUSADO)
 
 	@ManyToOne
 	@JoinColumn(name = "presente_id")
@@ -40,14 +40,14 @@ public class Convidado {
 	}
 
 	public Convidado(Long id, String nome, int numeroConvidado, String linkConvite, String nomeEditado,
-			StatusConfirmacao statusConfirmacao, Presente presenteEscolhido, Evento evento) {
+			 Presente presenteEscolhido, Evento evento) {
 		super();
 		this.id = id;
 		this.nome = nome;
 		this.numeroConvidado = numeroConvidado;
 		this.linkConvite = linkConvite;
 		this.nomeEditado = nomeEditado;
-		this.statusConfirmacao = statusConfirmacao;
+		//this.statusConfirmacao = statusConfirmacao;
 		this.presenteEscolhido = presenteEscolhido;
 		this.evento = evento;
 	}
@@ -66,14 +66,6 @@ public class Convidado {
 
 	public void setNomeEditado(String nomeEditado) {
 		this.nomeEditado = nomeEditado;
-	}
-
-	public StatusConfirmacao getStatusConfirmacao() {
-		return statusConfirmacao;
-	}
-
-	public void setStatusConfirmacao(StatusConfirmacao statusConfirmacao) {
-		this.statusConfirmacao = statusConfirmacao;
 	}
 
 	public Long getId() {
@@ -119,8 +111,7 @@ public class Convidado {
 	@Override
 	public String toString() {
 		return "Convidado [id=" + id + ", nome=" + nome + ", numeroConvidado=" + numeroConvidado + ", linkConvite="
-				+ linkConvite + ", nomeEditado=" + nomeEditado + ", statusConfirmacao=" + statusConfirmacao
-				+ ", presenteEscolhido=" + presenteEscolhido + ", evento=" + evento + "]";
+				+ linkConvite + ", nomeEditado=" + nomeEditado + ", statusConfirmacao=" + ", presenteEscolhido=" + presenteEscolhido + ", evento=" + evento + "]";
 	}
 
 	@Override
